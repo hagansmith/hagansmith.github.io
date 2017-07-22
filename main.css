@@ -1,0 +1,10 @@
+nav ul li a:hover {
+	color: white;
+	background-color: blue;
+}
+
+nav ul li a:active {
+
+	padding-left: 5px;
+	padding-right: 5px;
+}
