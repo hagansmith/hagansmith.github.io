@@ -8,3 +8,9 @@ nav ul li a:active {
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
+img {
+	
+	max-width: 30px;
+	max-height: 30px;
+}
