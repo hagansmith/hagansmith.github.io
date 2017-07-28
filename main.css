@@ -85,7 +85,7 @@ footer {
 
 /* Card Layout */
 
-#blog-container {
+#blog-holder {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
