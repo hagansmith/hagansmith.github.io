@@ -13,13 +13,13 @@ var blogs = [
 
 	{
 		title: 'Week 3 | Java Script',
-		content: 'I would also tile this loops and what-how!? I can not say I fully understand the loops yet but i am getting there. I understand how they are constructed and what they do but I do not know that I could construct it all from scratch. More on this later...',
+		content: 'I would also tile this loops and what-how!? I can not say I fully understand the loops yet but I am getting there. I understand how they are constructed and what they do but I do not know that I could construct it all from scratch. More on this later...',
 		date: 'July 29, 2017'
 	},
 
 	 {
 		title: 'Week 4 | Java Script week 2',
-		content: 'Foo-Bar',
+		content: 'Or functions in functions in functions for days. School kicked my butt this week, and it is largely because I let up a bit and did not study as much as I should have. The hardest thing for me to comprehend right now is how functions work exactly. What is passing to what and how to pass the correct information from one funtion to another. I expect in a month or two I will be looking back and laughing that I struggled so much with this.',
 		date: 'August 5, 2017 '
 	},
 
