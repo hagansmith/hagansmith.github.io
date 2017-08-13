@@ -24,8 +24,8 @@ var blogs = [
 	},
 
 	 {
-		title: 'Week 5 | Who Knows',
-		content: 'FooBar',
+		title: 'Week 5 | Git Hub Groups',
+		content: 'Just dive in. That is the best way to get some things done. This week we worked in groups trying to break our group git repo. Not really but breaking it and fixing it early on is the goal. We intentionally caused some conflicts as a result of the way we worked on some projects. Having a good plan going in and being prepared helped us to avoid generating too many conflicts.',
 		date: 'August 12, 2017'
 	}
 ]
