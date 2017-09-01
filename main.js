@@ -27,6 +27,18 @@ var blogs = [
 		title: 'Week 5 | Git Hub Groups',
 		content: 'Just dive in. That is the best way to get some things done. This week we worked in groups trying to break our group git repo. Not really but breaking it and fixing it early on is the goal. We intentionally caused some conflicts as a result of the way we worked on some projects. Having a good plan going in and being prepared helped us to avoid generating too many conflicts.',
 		date: 'August 12, 2017'
+	},
+
+	{
+		title: 'Week 6 | Markdown and Event Listeners',
+		content: "Week 6 introduced markdown for updaing our git readme files. Lesson here, make and update your readme files as you go they are no fin to go back and update/add to after the fact. We continue to hack away at functions how they work and adding functionality via event listeners to our work. Functions are still not fully clear, specifically with respect to the arguments and what and when to pass information. I have moments of clarity followed by complete confusion follwed by frustration. One day I will laugh that I didn't get it.",
+		date: 'August 19, 2017'
+	},
+
+	{
+		title: 'Week 7 | XHR',
+		content: "Just when you feel like you are starting to get it... nope! We added json files and XML requests to our knowledge. What was once stored in an array in our js files is now in a new file kind of looking like js but not, what an imposter. To add to our complexity we worked on requests for information from 2 files that then had to be 'linked' via vanilla js. Done and done, and on the plus side I feel pretty comfortable with functions now.",
+		date: 'August 26, 2017'
 	}
 ]
 
