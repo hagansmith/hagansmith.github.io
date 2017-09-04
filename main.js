@@ -1,5 +1,5 @@
-function blogsContent(){
-	var blogsData = JSON.parse(this.responseText).blogs;
+function blogsContent() {
+	let blogsData = JSON.parse(this.responseText).blogs;
 	blogBuilder(blogsData);
 };
 
@@ -8,9 +8,9 @@ function executeThisCodeIfFileErrors(){
 };
 
 const blogBuilder = (blogs) => {
-for (var i = 0;  i < blogs.length; i++) {
-	var currentBlog = blogs[i];
-	var domString = '';
+for (let i = 0;  i < blogs.length; i++) {
+	let currentBlog = blogs[i];
+	let domString = '';
 
 	domString += 		`<section class="blog col-md-4 thumbnail" id="blog_${[i]}">`;
   domString +=      '<div class="title child">';
@@ -27,16 +27,16 @@ for (var i = 0;  i < blogs.length; i++) {
 	document.getElementById('blog-holder').innerHTML += domString;
 	}
 
-	var blogCount = document.getElementsByClassName("blog");
+	let blogCount = document.getElementsByClassName("blog");
 	//Blog Post Event listener
-	for (var i = 0; i < blogCount.length; i++) {
+	for (let i = 0; i < blogCount.length; i++) {
 	  let blogId = (`blog_${i}`);
 		document.getElementById(blogId).addEventListener("click", blogPost);
 	}
 };
 
-var selectedBlog = document.getElementById('clickerText');
-function blogPost (event){
+let selectedBlog = document.getElementById('clickerText');
+const blogPost = (event) => {
 	if (event.target.offsetParent.classList.contains("blog")) {
 		selectedBlog.innerHTML = event.target.offsetParent.innerHTML;
 	}
