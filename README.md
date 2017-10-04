@@ -81,8 +81,47 @@ Update your navigation bar with the following interactivity.
     	* XHR now returns an array
     	* Loop that iterates over the array, builds up a string, and then puts the string on the DOM (from previous exercise).
 
-### Part 6
+### Personal Bio Site 6: Bootstrapping Your Personal Bio Site (Bootstrap)
+
+1. Open your main.js file and blog.html.
+1. Grid System: Use the grid system to display your blog entries. You should have 3 blog articles per row.
+1. Bootstrap Nav Bar: Should contain 3 elements:
+    1. Your "Logo" or personal bio site title
+    1. Input bar to search your blog posts (Logic specs for this in a later step). NOTE: This should **only be visible** from the Nav Bar on your Blog Page.
+    1. All of the links to your other pages on your website
+1. Blog Page
+    - The elements on this page should utilize the full width of the screen.
+    - Update each of your blog posts so they all have a set height. Cut off any of the text that expands beyond the set height using some CSS. (Hint: checkout the overflow property).
+    - Whenever the user clicks on a specific blog post card, that blog should appear in a special div (that spans all 12 columns) above all of the blog posts and should show the full content of the blog. When the user clicks on another blog post, it should replace the content of this special div with the content of the new blog post the user selected.
+
+**Bonus**: Search
+  - Whenever the user types in the search bar, it should filter the blog posts. EG: The user types in "abou", the only remaining blog cards showing should be ones where your content contains the string "abou" somewhere.
+  - Add an array of "tags" to each of your blog post entries. These can be displayed on the card or not, your choice. Make it so the search function only applies to these tags. EG: The user types in "func", the only remaining blog cards showing should be ones where your tags array contains the string "func" at some index in the array.
+
+### Part 7
 1. ES6-ify your entire personal site. No more var. Fat Arrow functions anywhere you can use them. String template literals (${}).
+
+### Personal Bio Site 8: Add Jquery to your Personal Bio
+
+1.  Add Jquery to your project for any DOM manipulation.  
+
+2.  None of the following should no longer exist in your project:
+* document.getElementById
+* XHRHttpRequest
+* addEventListener
+* parentNode
+* childNode
+* siblingNode
+* any other dom traversal with the word node
+
+
+3. You should make use of jquery things like:
+* $.get
+* .click
+* .children
+* .parent
+* .sibling
+* any other methods that strike your fancy
 
 ### How to view:
 [View Page](https://hagansmith.github.io)
