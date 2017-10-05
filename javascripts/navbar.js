@@ -22,4 +22,19 @@ let nav = $('.nav');
     }
   }
 
+
+var topofDiv = $("#topBar").offset().top; //gets offset of header
+var height = $("#topBar").outerHeight(); //gets height of header
+
+$(window).scroll(function(){
+    if($(window).scrollTop() > (topofDiv + (1/8)*height)){
+       $(".jumbotron").slideUp();
+			 $("#topBar").addClass('change');
+    }
+    else{
+       $(".jumbotron").slideDown();
+			 $("#topBar").removeClass('change');
+    }
+});
+
   module.exports = {};
