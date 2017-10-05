@@ -1,8 +1,10 @@
 "use strict";
 
+let blogData = [];
 
 $.get('../data/blog.json').done((blogsData) => {
-  blogBuilder(blogsData.blogs);
+  blogData = blogsData.blogs;
+  blogBuilder(blogData);
 	}).fail((error) => {
     console.log(error);
 });
@@ -31,19 +33,30 @@ const blogBuilder = (blogs) => {
   $('#blog-holder').html(blogString);
 
   let blogCount = $(".blog");
-	//Blog Post Event listener
+  //Blog Post Event listener
 	for (let i = 0; i < blogCount.length; i++) {
-	  // let blogId = (`blog_${i}`);
 		$(`#blog_${i}`).on("click", blogPost);
 	}
 };
 
-
+//set the content of the top blog reader to the full text of the selected blog
 let selectedBlog = $("#clickerText")[0];
 const blogPost = (event) => {
 	if ($(event.currentTarget).hasClass("blog")) {
 		selectedBlog.innerHTML = event.target.offsetParent.innerHTML;
+    $('#clickerText').removeClass('hidden');
 	}
 };
+
+//Search Function
+// $('#textField').keypress((event) => {
+//   if (event.key === 'Enter') {
+//     let txt = $('#textField').val();
+//     let results = blogData.filter(function(thing){
+//       return thing.name.indexOf(txt)>-1;
+//     });
+//     blogBuilder(results);
+//   }
+// });
 
 module.exports = {};

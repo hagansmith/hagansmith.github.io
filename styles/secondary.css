@@ -1,7 +1,10 @@
+body {
+  padding-top: 70px;
+}
+
 .blog {
   height: 110px;
   border: 2px solid lightgrey;
-  /*margin: 2.5px;*/
   overflow: hidden;
 }
 
@@ -23,4 +26,16 @@ img {
 
 ul {
   list-style-type: none;
+}
+
+#topBar {
+  background-image: url("../images/ahs.png");
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-color: #333;
+
+}
+
+.navbar-right {
+  color: #FAF8EF;
 }

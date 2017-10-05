@@ -1,100 +1,62 @@
-
-nav ul{
-	display: flex;
-	background-color: #fffef9;
-	justify-content: center;
-	padding: 20px;
-
+body {
+  padding-top: 70px;
 }
 
-nav ul li{
-	flex-wrap: wrap;
-	list-style: none;
-	padding: 5px;
+.blog {
+  height: 110px;
+  border: 2px solid lightgrey;
+  overflow: hidden;
 }
 
-nav ul li a {
-	text-decoration: none;
-
-}
-
-nav ul li a:hover {
-	color: white;
-	background-color: blue;
-}
-
-nav ul li a:active {
-
-	padding-left: 5px;
-	padding-right: 5px;
+.margin {
+  margin-left: 5px;
+  padding-right: 5px
 }
 
 img {
-	
 	max-width: 30px;
 	max-height: 30px;
 }
 
-footer {
-	text-align: center;
+#clickerText {
+  border:  2px solid lightgrey;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
-/*-- Card-Styling --*/
-
-.blog {
-	width: 400px;
-	border: 2px solid lightgrey;
-	margin: .5%;
-
+ul {
+  list-style-type: none;
 }
 
-
-.text > * {
-	margin: auto;
-	color: slategrey;
-	border-top: 1px solid lightgrey;
-	padding: 5px;
+.jumbotron {
+  background-image: url("../images/ahs.png");
+  background-repeat: no-repeat;
+  background-size: 350px;
+  background-position: center;
+  background-color: #333;
+  margin-top: 0px;
 }
 
-.text {
-	padding: 5%;	
+.change {
+  background-image: url("../images/ahs.png");
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-color: #333;
+  background-position-x: 45px; 
+  -webkit-animation: fadein 1s;
+  animation: fadein 1s;
 }
 
-
-
-.title h4{
-	text-align: center;
-	text-transform: uppercase;
-	font-family: 'Raleway', sans-serif;
-	font-size: 24px;
-	color: slategrey;
-	margin-top: .5em;
-	margin-bottom: .5em;
+.col-md-12 {
+  margin-top: 50px;
 }
 
-.date h6{
-	text-align: center;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 200;
-
-	font-size: 20px;
-	color: slategrey;
-	margin-top: 0;
-	margin-bottom: .5em;
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
-/* Card Layout */
-
-#blog-holder {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
-
-.blog {
-	position: relative;
-}
-
-
-
-
