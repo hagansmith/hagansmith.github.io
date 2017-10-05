@@ -33,9 +33,5 @@ ul {
   background-repeat: no-repeat;
   background-size: 200px;
   background-color: #333;
-
-}
-
-.navbar-right {
-  color: #FAF8EF;
+  background-position-x: 45px;
 }
