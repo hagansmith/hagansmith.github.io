@@ -1,8 +1,10 @@
 "use strict";
 
+let blogData = [];
 
 $.get('../data/blog.json').done((blogsData) => {
-  blogBuilder(blogsData.blogs);
+  blogData = blogsData.blogs;
+  blogBuilder(blogData);
 	}).fail((error) => {
     console.log(error);
 });
@@ -45,5 +47,19 @@ const blogPost = (event) => {
 		selectedBlog.innerHTML = event.target.offsetParent.innerHTML;
 	}
 };
+
+
+$('#textField').keypress((event) => {
+  event.preventDefault();
+  console.log(event);
+  if (event.key === 'Enter') {
+    let txt = $('#textField').val();
+    console.log(txt);
+    let results = blogData.filter(function(thing){
+      return thing.name.indexOf(txt)>-1;
+    });
+    blogBuilder(results);
+  }
+});
 
 module.exports = {};
