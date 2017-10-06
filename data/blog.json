@@ -45,6 +45,18 @@
 			"title": "Week 8 | Bootstrap",
 			"content": "Ahhh, a small breath of fresh air. Bootstrap was our topic for this week and it is nice to have a new tool to help with formatting a page. We also worked through a small portion of es6, some of which we were already using in previous exercies. It's becoming more important to plan the code and the layout before beginning to write as content needs to load before it can be used by other pieces of code.",
 			"date": "September 2, 2017"
+		},
+
+		{
+			"title": "Week 9 | Task Runners and Browserify",
+			"content": "Task runners, initially an annoyance eventually really helpful. I found when getting a project up and running that the task runners we were using felt bulky and in the way. As I progressed using them and especially as projects became more complex I found myself relying on the task runner to help me double check my work. It was all a matter of getting past the initial setup and getting the runner to pass and being working.",
+			"date": "September 9, 2017"
+		},
+
+		{
+			"title": "Week 10 | jQuery",
+			"content": "",
+			"date": "September 23, 2017"
 		}
 	]
 }
