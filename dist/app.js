@@ -67,8 +67,13 @@ module.exports = {};
 
 require('./blog.js');
 require('./navbar.js');
+var project = require('./projects');
 
-},{"./blog.js":1,"./navbar.js":3}],3:[function(require,module,exports){
+$(document).ready(function() {
+	project.initializer();
+});
+
+},{"./blog.js":1,"./navbar.js":3,"./projects":5}],3:[function(require,module,exports){
 "use strict";
 
 let navBar = '';
@@ -110,4 +115,73 @@ $(window).scroll(function(){
 
   module.exports = {};
 
-},{}]},{},[2]);
+},{}],4:[function(require,module,exports){
+"use strict";
+
+var outputDiv = $('#projectDiv');
+
+var domString = function(repo) {
+  console.log('data at dom', repo);
+	var domStrang = '';
+      domStrang +=   `<div class="col-md-4 text-center repo" id=${repo.id}>`;
+      domStrang +=   `<h1><a href=${repo.url}>${repo.name}</a></h1>`;
+      domStrang +=   `<h3>${repo.language}</h3>`;
+      domStrang +=   `</div>`;
+	printToDom(domStrang);
+};
+
+
+var printToDom = function(strang) {
+	outputDiv.append(strang);
+};
+
+module.exports = domString;
+
+},{}],5:[function(require,module,exports){
+"use strict";
+
+var dom = require('./projectDom');
+let projectRepo = [];
+
+var projectData = function(){
+	return new Promise(function(resolve, reject){
+		$.ajax('https://api.github.com/users/hagansmith/repos').done(function(data){
+      // console.log(data.name);
+      resolve(data);
+		}).fail(function(error1){
+			reject(error1);
+		});
+	});
+};
+
+var repoGetter = function(){
+	Promise.all([projectData()]).then(function(results){
+		console.log("results from promise.all", results);
+		results.forEach(function(result){
+			result.forEach(function(repos){
+				projectRepo.push(repos);
+			});
+		});
+		makeRepos();
+	}).catch(function(error){
+		console.log("error from Promise.all", error);
+	});
+};
+
+var makeRepos = function(){
+  projectRepo.forEach(function(result){
+    dom(result);
+	});
+};
+
+var initializer = function(){
+  repoGetter();
+};
+
+var getProjectRepo = function(){
+	return projectRepo;
+};
+
+module.exports = {initializer:initializer, getProjectRepo:getProjectRepo};
+
+},{"./projectDom":4}]},{},[2]);
