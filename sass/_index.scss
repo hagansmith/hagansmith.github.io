@@ -1,0 +1,57 @@
+@import 'variables';
+@import 'animations';
+
+body {
+  padding-top: 70px;
+}
+
+.margin {
+  margin-left: 5px;
+  padding-right: 5px
+}
+
+img {
+	max-width: 30px;
+	max-height: 30px;
+}
+
+#clickerText {
+  border:  2px solid lightgrey;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#topBar {
+  background-image: $logo;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-color: $charcoal;
+  background-position-x: 45px;
+}
+
+.jumbotron {
+  background-image: $logo;
+  background-repeat: no-repeat;
+  background-size: 350px;
+  background-position: center;
+  background-color: $charcoal;
+  margin-top: 0px;
+}
+
+.change {
+  @extend #topBar;
+  -webkit-animation: fadein 1s;
+  animation: fadein 1s;
+}
+
+.col-md-12 {
+  margin-top: 50px;
+}
+
+#footer {
+  height: 60px;
+}

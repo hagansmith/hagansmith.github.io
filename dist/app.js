@@ -91,7 +91,6 @@ $('.nav').html(navBar);
 //add active class to selected page
 let nav = $('.nav');
   for (var i = 0; i < nav.length; i++) {
-    // console.log($('.nav')[i].innerText);
     if (($('.nav')[i].innerText) === ($('title').html().split(" | ")[1])) {
      let btn = $('.nav')[i];
       $(btn).parent().addClass('active');
@@ -99,19 +98,21 @@ let nav = $('.nav');
   }
 
 
-var topofDiv = $("#topBar").offset().top; //gets offset of header
-var height = $("#topBar").outerHeight(); //gets height of header
+if  (($('title').html().split(" | ")[1]) === "History") {
+  var topofDiv = $("#topBarMain").offset().top; //gets offset of header
+  var height = $("#topBarMain").outerHeight(); //gets height of header
 
-$(window).scroll(function(){
-    if($(window).scrollTop() > (topofDiv + (1/8)*height)){
-       $(".jumbotron").slideUp();
-			 $("#topBar").addClass('change');
-    }
-    else{
-       $(".jumbotron").slideDown();
-			 $("#topBar").removeClass('change');
-    }
-});
+  $(window).scroll(function(){
+      if($(window).scrollTop() > (topofDiv + (1/8)*height)){
+         $(".jumbotron").slideUp();
+  			 $("#topBarMain").addClass('change');
+      }
+      else{
+         $(".jumbotron").slideDown();
+  			 $("#topBarMain").removeClass('change');
+      }
+  });
+}
 
   module.exports = {};
 
@@ -121,7 +122,6 @@ $(window).scroll(function(){
 var outputDiv = $('#projectDiv');
 
 var domString = function(repo) {
-  console.log('data at dom', repo);
 	var domStrang = '';
       domStrang +=   `<div class="col-md-4 text-center repo" id=${repo.id}>`;
       domStrang +=   `<h1><a href=${repo.url}>${repo.name}</a></h1>`;
@@ -146,7 +146,6 @@ let projectRepo = [];
 var projectData = function(){
 	return new Promise(function(resolve, reject){
 		$.ajax('https://api.github.com/users/hagansmith/repos').done(function(data){
-      // console.log(data.name);
       resolve(data);
 		}).fail(function(error1){
 			reject(error1);
@@ -155,12 +154,9 @@ var projectData = function(){
 };
 
 var repoGetter = function(){
-	Promise.all([projectData()]).then(function(results){
-		console.log("results from promise.all", results);
-		results.forEach(function(result){
-			result.forEach(function(repos){
-				projectRepo.push(repos);
-			});
+	projectData().then((results) => {
+		results.forEach((result) => {
+				projectRepo.push(result);
 		});
 		makeRepos();
 	}).catch(function(error){
@@ -182,6 +178,6 @@ var getProjectRepo = function(){
 	return projectRepo;
 };
 
-module.exports = {initializer:initializer, getProjectRepo:getProjectRepo};
+module.exports = {initializer, getProjectRepo};
 
 },{"./projectDom":4}]},{},[2]);

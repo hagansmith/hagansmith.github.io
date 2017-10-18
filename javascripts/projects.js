@@ -6,7 +6,6 @@ let projectRepo = [];
 var projectData = function(){
 	return new Promise(function(resolve, reject){
 		$.ajax('https://api.github.com/users/hagansmith/repos').done(function(data){
-      // console.log(data.name);
       resolve(data);
 		}).fail(function(error1){
 			reject(error1);
@@ -15,11 +14,10 @@ var projectData = function(){
 };
 
 var repoGetter = function(){
-	Promise.all([projectData()]).then(function(results){
-		results.forEach(function(result){
-			result.forEach(function(repos){
-				projectRepo.push(repos);
-			});
+	projectData().then((results) => {
+		results.forEach((result) => {
+				projectRepo.push(result);
+
 		});
 		makeRepos();
 	}).catch(function(error){
@@ -41,4 +39,4 @@ var getProjectRepo = function(){
 	return projectRepo;
 };
 
-module.exports = {initializer:initializer, getProjectRepo:getProjectRepo};
+module.exports = {initializer, getProjectRepo};
