@@ -1,3 +1,5 @@
+@import 'variables';
+
 .blog {
   height: 110px;
   border: 2px solid lightgrey;
@@ -5,7 +7,7 @@
 }
 
 .repo {
-  border: 3px solid #333;
+  border: 3px solid $charcoal;
   border-radius: 12px;
   margin: 2.5px
 }

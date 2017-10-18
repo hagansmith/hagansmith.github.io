@@ -15,7 +15,6 @@ $('.nav').html(navBar);
 //add active class to selected page
 let nav = $('.nav');
   for (var i = 0; i < nav.length; i++) {
-    // console.log($('.nav')[i].innerText);
     if (($('.nav')[i].innerText) === ($('title').html().split(" | ")[1])) {
      let btn = $('.nav')[i];
       $(btn).parent().addClass('active');
@@ -23,18 +22,20 @@ let nav = $('.nav');
   }
 
 
-var topofDiv = $("#topBar").offset().top; //gets offset of header
-var height = $("#topBar").outerHeight(); //gets height of header
+if  (($('title').html().split(" | ")[1]) === "History") {
+  var topofDiv = $("#topBarMain").offset().top; //gets offset of header
+  var height = $("#topBarMain").outerHeight(); //gets height of header
 
-$(window).scroll(function(){
-    if($(window).scrollTop() > (topofDiv + (1/8)*height)){
-       $(".jumbotron").slideUp();
-			 $("#topBar").addClass('change');
-    }
-    else{
-       $(".jumbotron").slideDown();
-			 $("#topBar").removeClass('change');
-    }
-});
+  $(window).scroll(function(){
+      if($(window).scrollTop() > (topofDiv + (1/8)*height)){
+         $(".jumbotron").slideUp();
+  			 $("#topBarMain").addClass('change');
+      }
+      else{
+         $(".jumbotron").slideDown();
+  			 $("#topBarMain").removeClass('change');
+      }
+  });
+}
 
   module.exports = {};
