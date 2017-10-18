@@ -16,7 +16,6 @@ var projectData = function(){
 
 var repoGetter = function(){
 	Promise.all([projectData()]).then(function(results){
-		console.log("results from promise.all", results);
 		results.forEach(function(result){
 			result.forEach(function(repos){
 				projectRepo.push(repos);

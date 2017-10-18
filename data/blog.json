@@ -55,8 +55,18 @@
 
 		{
 			"title": "Week 10 | jQuery",
-			"content": "",
+			"content": "I found jQuery to be a simplification of some of the more tedious javascript activies, namely traversing the DOM, modifying CSS attributes, and making ajax calls. I find it difficult at this time, and with the limited experince writing vanilla javascript, to even remember the tediom of some of the javascript. The simplification is a welcomed change.",
 			"date": "September 23, 2017"
-		}
+		},
+		{
+			"title": "Week 11 | Promises",
+			"content": "I was out of town for the promises lesson and so I have bee self teaching a bit to myself. The promises are nice because they allow the code to process the asynchronous request while still moving forward and then calling the data from the request when needed. This has allowed for more modular code but has also been a bit confusing.",
+			"date": "October 14, 2017"
+		},
+		{
+			"title": "Week 12 | API's",
+			"content": "API's are great! Actually, web API's are as good as the provider who made them but still what an amazing resource to be able to use an API to extend the functionality of a web app I am developing. I am excited to have the knowledge to be able to access and use API's in my future projects.",
+			"date": "October 21, 2017"
+		},
 	]
 }
