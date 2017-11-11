@@ -60,7 +60,7 @@
 		},
 		{
 			"title": "Week 11 | Promises",
-			"content": "I was out of town for the promises lesson and so I have bee self teaching a bit to myself. The promises are nice because they allow the code to process the asynchronous request while still moving forward and then calling the data from the request when needed. This has allowed for more modular code but has also been a bit confusing.",
+			"content": "I was out of town for the promises lesson and so I have bee self teaching a bit to myself. The promises are nice because they allow the code to process the asynchronous request while still moving forward and then calling the data from the request when needed. This has allowed for more modular code but has also been a bit confusing. Week 11 update.. I like this snippet about promises found --A promise is an object that may produce a single value some time in the future: either a resolved value, or a reason that it’ s not resolved(e.g., a network error occurred).A promise may be in one of 3 possible states: fulfilled, rejected, or pending.Promise users can attach callbacks to handle the fulfilled value or the reason for rejection. Promises are eager, meaning that a promise will start doing whatever task you give it as soon as the promise constructor is invoked.If you need lazy, check out observables or tasks.--",
 			"date": "October 14, 2017"
 		},
 		{
@@ -68,5 +68,15 @@
 			"content": "API's are great! Actually, web API's are as good as the provider who made them but still what an amazing resource to be able to use an API to extend the functionality of a web app I am developing. I am excited to have the knowledge to be able to access and use API's in my future projects.",
 			"date": "October 21, 2017"
 		},
+		{
+			"title": "Week 13 | Firebase",
+			"content": "Finally we are able to store information and provide some form of persitence to our work! Firebase allows us to build on last week's work with APIs and promises to actually get stored data update it and save it again. It makes me excited for the backend of this program and more data capabilities!",
+			"date": "October 28, 2017"
+		},
+		{
+			"title": "Week 14 | ThemePark",
+			"content": "2 weeks of theme park! Individually The hardest part of this project was using time and manipulating provided time formats to match formats provided by moment.js. Working in a group also added another level of complexity but I think we have all learned how to plan projects better in the future and communicate with each other in person and remotely.",
+			"date": "November 11, 2017"
+		}
 	]
 }
