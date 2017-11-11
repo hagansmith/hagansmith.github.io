@@ -17,6 +17,7 @@ var repoGetter = function(){
 	projectData().then((results) => {
 		results.forEach((result) => {
 				projectRepo.push(result);
+
 		});
 		makeRepos();
 	}).catch(function(error){
