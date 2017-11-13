@@ -23,8 +23,8 @@ let nav = $('.nav');
 
 
 if  (($('title').html().split(" | ")[1]) === "History") {
-  var topofDiv = $("#topBarMain").offset().top; //gets offset of header
-  var height = $("#topBarMain").outerHeight(); //gets height of header
+  let topofDiv = $("#topBarMain").offset().top; //gets offset of header
+  let height = $("#topBarMain").outerHeight(); //gets height of header
 
   $(window).scroll(function(){
       if($(window).scrollTop() > (topofDiv + (1/8)*height)){

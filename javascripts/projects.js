@@ -1,9 +1,9 @@
 "use strict";
 
-var dom = require('./projectDom');
+let dom = require('./projectDom');
 let projectRepo = [];
 
-var projectData = function(){
+const projectData = function(){
 	return new Promise(function(resolve, reject){
 		$.ajax('https://api.github.com/users/hagansmith/repos').done(function(data){
       resolve(data);
@@ -13,7 +13,7 @@ var projectData = function(){
 	});
 };
 
-var repoGetter = function(){
+const repoGetter = function(){
 	projectData().then((results) => {
 		results.forEach((result) => {
 				projectRepo.push(result);
@@ -24,17 +24,17 @@ var repoGetter = function(){
 	});
 };
 
-var makeRepos = function(){
+const makeRepos = function(){
   projectRepo.forEach(function(result){
     dom(result);
 	});
 };
 
-var initializer = function(){
+const initializer = function(){
   repoGetter();
 };
 
-var getProjectRepo = function(){
+const getProjectRepo = function(){
 	return projectRepo;
 };
 
