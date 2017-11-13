@@ -1,9 +1,8 @@
 "use strict";
 
-require('./blog.js');
 require('./navbar.js');
+let blog = require('./blog.js');
 let apiKeys = require('./apiKeys.js');
-let firebaseApi = require('./firebaseApi.js');
 let project = require('./projects');
 
 $(document).ready(function() {
@@ -11,4 +10,3 @@ $(document).ready(function() {
 });
 
 apiKeys.retrieveKeys();
-firebaseApi.getBlogs();

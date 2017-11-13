@@ -29,14 +29,6 @@ module.exports = {retrieveKeys};
 },{"./firebaseApi.js":3}],2:[function(require,module,exports){
 "use strict";
 
-let blogData = [];
-
-$.get('../db/blog.json').done((blogsData) => {
-  blogData = blogsData.blogs;
-  blogBuilder(blogData);
-	}).fail((error) => {
-    console.log(error);
-});
 
 const blogBuilder = (blogs) => {
   let blogString = '';
@@ -88,95 +80,41 @@ const blogPost = (event) => {
 //   }
 // });
 
-module.exports = {};
+module.exports = {blogBuilder};
 
 },{}],3:[function(require,module,exports){
 "use strict";
+
+let blog = require("./blog.js");
 
 let firebaseKey = "";
 let userUid = "";
 
 const setKey = (key) => {
   firebaseKey = key;
+  getBlogs();
 };
 
-// //Firebase: GOOGLE - Use input credentials to authenticate user.
-//   let authenticateGoogle = () => {
-//     return new Promise((resolve, reject) => {
-//       var provider = new firebase.auth.GoogleAuthProvider();
-//       firebase.auth().signInWithPopup(provider)
-//         .then((authData) => {
-//         	userUid = authData.user.uid;
-//             resolve(authData.user);
-//         }).catch((error) => {
-//             reject(error);
-//         });
-//     });
-//   };
-//
 const getBlogs = () => {
   return new Promise ((resolve, reject) => {
-    $.ajax(`${firebaseKey.databaseURL}/blogs.json`).then((blogs) => {      
+    $.ajax(`${firebaseKey.databaseURL}/blogs.json`).then((blogs) => {
+        blog.blogBuilder(blogs);
         resolve(blogs);
-        console.log(blogs);
+
       }).catch((err) => {
         reject(err);
       });
   });
 };
-//
-// const saveMoive = (movie) => {
-//   movie.uid = userUid;
-//   return new Promise((resolve, reject) => {
-//       $.ajax({
-//         method: "POST",
-//         url: `${firebaseKey.databaseURL}/movies.json`,
-//         data: JSON.stringify(movie)
-//       }).then((result) => {
-//         resolve(result);
-//       }).catch((error) => {
-//         reject(error);
-//       });
-//   });
-// };
-//
-// const deleteMovie = (movieId) => {
-//   return new Promise ((resolve, reject) => {
-//     $.ajax({
-//       method: "DELETE",
-//       url: `${firebaseKey.databaseURL}/movies/${movieId}.json`,
-//     }).then((fbMovie) => {
-//       resolve(fbMovie);
-//     }).catch((err) => {
-//       reject(err);
-//     });
-//   });
-// };
-//
-// const editMovie = (modifiedMovie, movieId) => {
-//   modifiedMovie.uid = userUid;
-//   return new Promise ((resolve, reject) => {
-//     $.ajax({
-//       method: "PUT",
-//       url: `${firebaseKey.databaseURL}/movies/${movieId}.json`,
-//       data: JSON.stringify(modifiedMovie)
-//     }).then((edit) => {
-//       resolve(edit)
-//     }).catch((err)=> {
-//       reject(err);
-//     });
-//   });
-// };
 
-module.exports = {setKey, getBlogs};
+module.exports = {setKey};
 
-},{}],4:[function(require,module,exports){
+},{"./blog.js":2}],4:[function(require,module,exports){
 "use strict";
 
-require('./blog.js');
 require('./navbar.js');
+let blog = require('./blog.js');
 let apiKeys = require('./apiKeys.js');
-let firebaseApi = require('./firebaseApi.js');
 let project = require('./projects');
 
 $(document).ready(function() {
@@ -184,9 +122,8 @@ $(document).ready(function() {
 });
 
 apiKeys.retrieveKeys();
-firebaseApi.getBlogs();
 
-},{"./apiKeys.js":1,"./blog.js":2,"./firebaseApi.js":3,"./navbar.js":5,"./projects":7}],5:[function(require,module,exports){
+},{"./apiKeys.js":1,"./blog.js":2,"./navbar.js":5,"./projects":7}],5:[function(require,module,exports){
 "use strict";
 
 let navBar = '';

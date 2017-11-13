@@ -1,13 +1,5 @@
 "use strict";
 
-let blogData = [];
-
-$.get('../db/blog.json').done((blogsData) => {
-  blogData = blogsData.blogs;
-  blogBuilder(blogData);
-	}).fail((error) => {
-    console.log(error);
-});
 
 const blogBuilder = (blogs) => {
   let blogString = '';
@@ -59,4 +51,4 @@ const blogPost = (event) => {
 //   }
 // });
 
-module.exports = {};
+module.exports = {blogBuilder};
