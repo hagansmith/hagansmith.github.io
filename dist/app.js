@@ -1,9 +1,37 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
+//const tmdb = require('./tmdb.js');
+const firebaseApi = require('./firebaseApi.js');
+
+const apiKeys = ( ) => {
+  return new Promise ((resolve, reject) => {
+    $.ajax('./db/apiKeys.json').done((data) => {
+      resolve(data.apiKeys);
+    }).fail((error) => {
+      reject(error);
+    });
+  });
+};
+
+const retrieveKeys = () => {
+  apiKeys().then((results) => {
+    firebaseApi.setKey(results.firebaseKeys);
+    firebase.initializeApp(results.firebaseKeys);
+  }).catch((error) => {
+    console.log('error in retrieve keys', error );
+  });
+};
+
+
+module.exports = {retrieveKeys};
+
+},{"./firebaseApi.js":3}],2:[function(require,module,exports){
+"use strict";
+
 let blogData = [];
 
-$.get('../data/blog.json').done((blogsData) => {
+$.get('../db/blog.json').done((blogsData) => {
   blogData = blogsData.blogs;
   blogBuilder(blogData);
 	}).fail((error) => {
@@ -62,18 +90,103 @@ const blogPost = (event) => {
 
 module.exports = {};
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
+"use strict";
+
+let firebaseKey = "";
+let userUid = "";
+
+const setKey = (key) => {
+  firebaseKey = key;
+};
+
+// //Firebase: GOOGLE - Use input credentials to authenticate user.
+//   let authenticateGoogle = () => {
+//     return new Promise((resolve, reject) => {
+//       var provider = new firebase.auth.GoogleAuthProvider();
+//       firebase.auth().signInWithPopup(provider)
+//         .then((authData) => {
+//         	userUid = authData.user.uid;
+//             resolve(authData.user);
+//         }).catch((error) => {
+//             reject(error);
+//         });
+//     });
+//   };
+//
+const getBlogs = () => {
+  return new Promise ((resolve, reject) => {
+    $.ajax(`${firebaseKey.databaseURL}/blogs.json`).then((blogs) => {      
+        resolve(blogs);
+        console.log(blogs);
+      }).catch((err) => {
+        reject(err);
+      });
+  });
+};
+//
+// const saveMoive = (movie) => {
+//   movie.uid = userUid;
+//   return new Promise((resolve, reject) => {
+//       $.ajax({
+//         method: "POST",
+//         url: `${firebaseKey.databaseURL}/movies.json`,
+//         data: JSON.stringify(movie)
+//       }).then((result) => {
+//         resolve(result);
+//       }).catch((error) => {
+//         reject(error);
+//       });
+//   });
+// };
+//
+// const deleteMovie = (movieId) => {
+//   return new Promise ((resolve, reject) => {
+//     $.ajax({
+//       method: "DELETE",
+//       url: `${firebaseKey.databaseURL}/movies/${movieId}.json`,
+//     }).then((fbMovie) => {
+//       resolve(fbMovie);
+//     }).catch((err) => {
+//       reject(err);
+//     });
+//   });
+// };
+//
+// const editMovie = (modifiedMovie, movieId) => {
+//   modifiedMovie.uid = userUid;
+//   return new Promise ((resolve, reject) => {
+//     $.ajax({
+//       method: "PUT",
+//       url: `${firebaseKey.databaseURL}/movies/${movieId}.json`,
+//       data: JSON.stringify(modifiedMovie)
+//     }).then((edit) => {
+//       resolve(edit)
+//     }).catch((err)=> {
+//       reject(err);
+//     });
+//   });
+// };
+
+module.exports = {setKey, getBlogs};
+
+},{}],4:[function(require,module,exports){
 "use strict";
 
 require('./blog.js');
 require('./navbar.js');
-var project = require('./projects');
+let apiKeys = require('./apiKeys.js');
+let firebaseApi = require('./firebaseApi.js');
+let project = require('./projects');
 
 $(document).ready(function() {
 	project.initializer();
 });
 
-},{"./blog.js":1,"./navbar.js":3,"./projects":5}],3:[function(require,module,exports){
+apiKeys.retrieveKeys();
+firebaseApi.getBlogs();
+
+},{"./apiKeys.js":1,"./blog.js":2,"./firebaseApi.js":3,"./navbar.js":5,"./projects":7}],5:[function(require,module,exports){
 "use strict";
 
 let navBar = '';
@@ -99,8 +212,8 @@ let nav = $('.nav');
 
 
 if  (($('title').html().split(" | ")[1]) === "History") {
-  var topofDiv = $("#topBarMain").offset().top; //gets offset of header
-  var height = $("#topBarMain").outerHeight(); //gets height of header
+  let topofDiv = $("#topBarMain").offset().top; //gets offset of header
+  let height = $("#topBarMain").outerHeight(); //gets height of header
 
   $(window).scroll(function(){
       if($(window).scrollTop() > (topofDiv + (1/8)*height)){
@@ -116,12 +229,12 @@ if  (($('title').html().split(" | ")[1]) === "History") {
 
   module.exports = {};
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
-var outputDiv = $('#projectDiv');
+let outputDiv = $('#projectDiv');
 
-var domString = function(repo) {
+const domString = function(repo) {
 	var domStrang = '';
       domStrang +=   `<div class="col-md-4 text-center repo" id=${repo.id}>`;
       domStrang +=   `<h1><a href=${repo.url}>${repo.name}</a></h1>`;
@@ -131,19 +244,19 @@ var domString = function(repo) {
 };
 
 
-var printToDom = function(strang) {
+const printToDom = function(strang) {
 	outputDiv.append(strang);
 };
 
 module.exports = domString;
 
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
-var dom = require('./projectDom');
+let dom = require('./projectDom');
 let projectRepo = [];
 
-var projectData = function(){
+const projectData = function(){
 	return new Promise(function(resolve, reject){
 		$.ajax('https://api.github.com/users/hagansmith/repos').done(function(data){
       resolve(data);
@@ -153,7 +266,7 @@ var projectData = function(){
 	});
 };
 
-var repoGetter = function(){
+const repoGetter = function(){
 	projectData().then((results) => {
 		results.forEach((result) => {
 				projectRepo.push(result);
@@ -164,20 +277,20 @@ var repoGetter = function(){
 	});
 };
 
-var makeRepos = function(){
+const makeRepos = function(){
   projectRepo.forEach(function(result){
     dom(result);
 	});
 };
 
-var initializer = function(){
+const initializer = function(){
   repoGetter();
 };
 
-var getProjectRepo = function(){
+const getProjectRepo = function(){
 	return projectRepo;
 };
 
 module.exports = {initializer, getProjectRepo};
 
-},{"./projectDom":4}]},{},[2]);
+},{"./projectDom":6}]},{},[4]);

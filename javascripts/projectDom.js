@@ -1,8 +1,8 @@
 "use strict";
 
-var outputDiv = $('#projectDiv');
+let outputDiv = $('#projectDiv');
 
-var domString = function(repo) {
+const domString = function(repo) {
 	var domStrang = '';
       domStrang +=   `<div class="col-md-4 text-center repo" id=${repo.id}>`;
       domStrang +=   `<h1><a href=${repo.url}>${repo.name}</a></h1>`;
@@ -12,7 +12,7 @@ var domString = function(repo) {
 };
 
 
-var printToDom = function(strang) {
+const printToDom = function(strang) {
 	outputDiv.append(strang);
 };
 

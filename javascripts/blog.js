@@ -2,7 +2,7 @@
 
 let blogData = [];
 
-$.get('../data/blog.json').done((blogsData) => {
+$.get('../db/blog.json').done((blogsData) => {
   blogData = blogsData.blogs;
   blogBuilder(blogData);
 	}).fail((error) => {

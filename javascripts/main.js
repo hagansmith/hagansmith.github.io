@@ -2,8 +2,13 @@
 
 require('./blog.js');
 require('./navbar.js');
-var project = require('./projects');
+let apiKeys = require('./apiKeys.js');
+let firebaseApi = require('./firebaseApi.js');
+let project = require('./projects');
 
 $(document).ready(function() {
 	project.initializer();
 });
+
+apiKeys.retrieveKeys();
+firebaseApi.getBlogs();
