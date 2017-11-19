@@ -77,6 +77,37 @@
 			"title": "Week 14 | ThemePark",
 			"content": "2 weeks of theme park! Individually The hardest part of this project was using time and manipulating provided time formats to match formats provided by moment.js. Working in a group also added another level of complexity but I think we have all learned how to plan projects better in the future and communicate with each other in person and remotely.",
 			"date": "November 11, 2017"
+		},
+		{
+			"title": "Week 15 | Angular",
+			"content": "This week we had a collison with Angular. As the last item on the list to learn, before getting into capstones and wrap up of this first half of the program, it was a lot to take on in such a short time. It is nice to have a framework which saves on some of the more arduous vanilla javascript tasks. As it is a requirement in the 2 components for moving on from the first half it's both exciting and nerve racking to try and digest it all and start putting all the pieces from the past 6 months together.",
+			"date": "November 18, 2017"
+		}
+	],
+	"projects": [{
+			"name": "Browserify Sandwich",
+			"description": "The browserify sandwich project is an individual project working with Browserify, Grunt, JSON, and XHR",
+			"screen_shot": "https://github.com/hagansmith/browserfy_sandwich/blob/master/browserSandwich.gif",
+			"gitub_link": "https://github.com/hagansmith/browserfy_sandwich"
+		},
+		{
+			"name": "Temperature Converter",
+			"description": "User selects a scale to convert to and the temperature and the converted temperature is displayed. Temperature converter is a introductory javascript, HTML, and CSS exercise. JS is used to write information to the DOM.",
+			"screen_shot": "https://github.com/hagansmith/temperatureConverter/blob/master/TempConverter.gif",
+			"gitub_link": "https://github.com/hagansmith/temperatureConverter"
+		},
+		{
+			"name": "Acme Exlosives",
+			"description": "Upon page load the user is presented with a selector to display products by category. When a category is selected only the items in that category are displayed. Acme explosives is an exercise in using javascript promises to asynchronously load data from json files.",
+			"screen_shot": "https://github.com/hagansmith/Acme-Explosives/blob/master/Demo.gif",
+			"gitub_link": "https://github.com/hagansmith/Acme-Explosives"
+		},
+		{
+			"name": "Advocate Theme Park",
+			"description": "For this project groups were assigned by Myers Briggs personality types. As a team, create a interactive map of a theme park to include different areas with attractions and events. Leaning objectives include: becoming more proficient in working with Firebase, promises, remote deployment, github, and working on a development team",
+			"screen_shot": "https://github.com/hagansmith/browserfy_sandwich/blob/master/browserSandwich.gif",
+			"gitub_link": "https://github.com/nss-evening-cohort-06/theme-park-advocates",
+			"site_link": "https://theme-park-advocates.firebaseapp.com/"
 		}
 	]
 }

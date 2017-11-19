@@ -1,6 +1,5 @@
 "use strict";
 
-//const tmdb = require('./tmdb.js');
 const firebaseApi = require('./firebaseApi.js');
 
 const apiKeys = ( ) => {

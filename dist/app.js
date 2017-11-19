@@ -1,7 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-//const tmdb = require('./tmdb.js');
 const firebaseApi = require('./firebaseApi.js');
 
 const apiKeys = ( ) => {
@@ -86,6 +85,7 @@ module.exports = {blogBuilder};
 "use strict";
 
 let blog = require("./blog.js");
+let projects = require("./projects.js");
 
 let firebaseKey = "";
 let userUid = "";
@@ -93,6 +93,7 @@ let userUid = "";
 const setKey = (key) => {
   firebaseKey = key;
   getBlogs();
+  projectData();
 };
 
 const getBlogs = () => {
@@ -100,30 +101,38 @@ const getBlogs = () => {
     $.ajax(`${firebaseKey.databaseURL}/blogs.json`).then((blogs) => {
         blog.blogBuilder(blogs);
         resolve(blogs);
-
       }).catch((err) => {
         reject(err);
       });
   });
 };
 
-module.exports = {setKey};
+const projectData = function(){
+	return new Promise((resolve, reject) => {
+		$.ajax(`${firebaseKey.databaseURL}/projects.json`).then((data) => {
+        projects.repoGetter(data);
+        resolve(data);
+		}).catch((error1) => {
+			  reject(error1);
+		});
+	});
+};
 
-},{"./blog.js":2}],4:[function(require,module,exports){
+module.exports = {setKey, firebaseKey, projectData};
+
+},{"./blog.js":2,"./projects.js":7}],4:[function(require,module,exports){
 "use strict";
 
 require('./navbar.js');
-let blog = require('./blog.js');
 let apiKeys = require('./apiKeys.js');
-let project = require('./projects');
 
-$(document).ready(function() {
-	project.initializer();
-});
+// $('#projectDiv').ready(function() {
+// 	project.initializer();
+// });
 
 apiKeys.retrieveKeys();
 
-},{"./apiKeys.js":1,"./blog.js":2,"./navbar.js":5,"./projects":7}],5:[function(require,module,exports){
+},{"./apiKeys.js":1,"./navbar.js":5}],5:[function(require,module,exports){
 "use strict";
 
 let navBar = '';
@@ -175,7 +184,8 @@ const domString = function(repo) {
 	var domStrang = '';
       domStrang +=   `<div class="col-md-4 text-center repo" id=${repo.id}>`;
       domStrang +=   `<h1><a href=${repo.url}>${repo.name}</a></h1>`;
-      domStrang +=   `<h3>${repo.language}</h3>`;
+      domStrang +=   `<h3>${repo.description}</h3>`;
+			domStrang +=   `<img src="${repo.screen_shot}">`;
       domStrang +=   `</div>`;
 	printToDom(domStrang);
 };
@@ -193,25 +203,11 @@ module.exports = domString;
 let dom = require('./projectDom');
 let projectRepo = [];
 
-const projectData = function(){
-	return new Promise(function(resolve, reject){
-		$.ajax('https://api.github.com/users/hagansmith/repos').done(function(data){
-      resolve(data);
-		}).fail(function(error1){
-			reject(error1);
-		});
-	});
-};
-
-const repoGetter = function(){
-	projectData().then((results) => {
+const repoGetter = function(results){
 		results.forEach((result) => {
 				projectRepo.push(result);
 		});
 		makeRepos();
-	}).catch(function(error){
-		console.log("error from Promise.all", error);
-	});
 };
 
 const makeRepos = function(){
@@ -220,14 +216,10 @@ const makeRepos = function(){
 	});
 };
 
-const initializer = function(){
-  repoGetter();
-};
-
 const getProjectRepo = function(){
 	return projectRepo;
 };
 
-module.exports = {initializer, getProjectRepo};
+module.exports = {repoGetter};
 
 },{"./projectDom":6}]},{},[4]);
